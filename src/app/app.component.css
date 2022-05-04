@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  align-content: stretch;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+.example input[type='text'] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+.example button {
+  float: left;
+  width: 10%;
+  padding: 10px;
+  color: #0d0d0d;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+.profile-container {
+  display: flex;
+  justify-content: center;
+}
+
+.w3-clear {
+  margin-top: 50px;
+}

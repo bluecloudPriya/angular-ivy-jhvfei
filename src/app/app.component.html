@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="item" style="margin:8px"><h3>Dashboard</h3></div>
+  <div class="item" style="margin:8px">
+    <div class="example">
+      <input
+        type="text"
+        [(ngModel)]="searchvalue"
+        placeholder="Search.."
+        name="search"
+        (keyup)="keyUpInput(searchvalue)"
+      />
+      <button type="submit" (click)="closeSearch()">
+        <i class="fa fa-close"></i>
+      </button>
+      <button type="submit" (click)="clickSubmit()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+    <div
+      class="mt-5 pt-5"
+      *ngIf="searchstart.length > 0 && historyClicked == false && searchvalue"
+    >
+      <div *ngFor="let item of searchstart | filter: searchvalue">
+        <div class="result-container pl-5">
+          <p (click)="clickResult(item)">{{ item.login }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="w3-card w3-white w3-round"
+      *ngIf="searchvalue && resultClicked == true"
+    >
+      <div style="margin-top:58px">
+        <img
+          src="{{ imgSrc }}"
+          alt="Avatar"
+          class="w3-left w3-circle"
+          style="width:60px;margin:8px"
+        />
+
+        <h2>{{ userTitle }}</h2>
+      </div>
+
+      <hr class="w3-clear" />
+      <p style="padding-right:16px; padding-left:16px">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+      <div class="profile-container">
+        <button
+          type="button"
+          class="w3-theme-d1 w3-margin-bottom"
+          style="margin-bottom: 16px;"
+        >
+          <i class="fa fa-profile"></i> View Profile
+        </button>
+      </div>
+    </div>
+    <div
+      class="w3-card w3-white w3-round"
+      *ngIf="
+        !searchvalue &&
+        historyClicked == true &&
+        historyArr.length > 0 &&
+        imgSrc &&
+        userTitle
+      "
+    >
+      <div style="margin-top:58px">
+        <img
+          src="{{ imgSrc }}"
+          alt="Avatar"
+          class="w3-left w3-circle"
+          style="width:60px;margin:8px"
+        />
+
+        <h2>{{ userTitle }}</h2>
+      </div>
+
+      <hr class="w3-clear" />
+      <p style="padding-right:16px; padding-left:16px">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
+      <div class="profile-container">
+        <button
+          type="button"
+          class="w3-theme-d1 w3-margin-bottom"
+          style="margin-bottom: 16px;"
+        >
+          <i class="fa fa-profile"></i> View Profile
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="item" style="margin:8px">
+    <h4 (click)="clickHistory()" class="historyTitle ml-3">history</h4>
+    <div
+      class="mt-5 pt-5 historyPanel"
+      *ngIf="historyClicked == true && historyArr.length > 0"
+    >
+      <div *ngFor="let item of historyArr">
+        <div class="result-container pl-5">
+          <p (click)="historyResult(item)">{{ item }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
